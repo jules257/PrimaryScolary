@@ -23,12 +23,12 @@
     <!-- /.content-header -->
 
     <!-- button insert -->
-    
+    {% if has_perm %}
     <center>
         <a href="{% url 'fonctions_create' %}" class="btn btn-primary">nouveau</a>
 
     </center>
-    
+    {% endif %}
 
     <div class="card-body">
 
@@ -87,17 +87,21 @@
 
 
                     <td>
+                        {% if has_perm %}
                        
                         <a class="btn btn-success btn-sm" href="{% url 'fonctions_edit' fonction.id %}">
                             <span class="fas fa-edit"></span>
                             Edit
                         </a>
+                        {% endif %}
+                        {% if has_perm %}
                         
                         <a class="btn btn-danger btn-sm" onclick="return confirm('do you want to delete!!' )"
                             href="{% url 'fonctions_delete' fonction.id %}">
                             <span class="fas fa-trash"></span>
                             Delete
                         </a>
+                        {% endif %}
                        
 
                     </td>
