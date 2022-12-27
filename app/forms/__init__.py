@@ -4,6 +4,7 @@ from .elev_form import ElevForm
 from .parent_form import ParentForm
 from .classe_form import ClasseForm
 from .cour_form import CourForm
+from .test_form import TestForm
 
 
 

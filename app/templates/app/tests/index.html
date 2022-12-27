@@ -1,0 +1,137 @@
+{% extends 'app/layouts/default.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">tests</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">ManagementScolary</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- button insert -->
+   
+    <center>
+        <a href="{% url 'tests_create' %}" class="btn btn-primary">new</a>
+
+    </center>
+    
+
+    <div class="card-body">
+
+        <!-- messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-alert mr-1"></i>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <table id="example1" class="table table-bordered table-hover">
+            <style>
+
+            </style>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>date</th>
+                    <th>type </th>
+                    <th>trimestre</th>
+                    <th>annee scolaire</th>
+                    <th>classe</th>
+                    <th>cours</th>
+                    <th>enseignant</th>
+
+
+
+
+
+
+
+
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for test in tests %}
+                <tr>
+
+                    <td>{{test.id}}</td>
+                    <td>{{test.date}}</td>
+                    <td>{{test.type}}</td>
+                    <td>{{test.periode}}</td>
+                    <td>{{test.anneescolaire.anneescolaire}}</td>
+
+                    <td>{{test.classe.nom_classe}}</td>
+
+                    <td>{{test.cour.nom_cours}}</td>
+                    <td>{{test.enseignante.matricule}} {{test.enseignante.prenom}}</td>
+
+
+
+
+
+
+                    <td>
+                        
+                        <a class="btn btn-success btn-sm" href="{% url 'tests_edit' test.id %}">
+                            <span class="fas fa-edit"></span>
+                            Edit
+                        </a>
+                     
+                   
+                        <a class="btn btn-danger btn-sm" onclick="return confirm('do you want to delete!!' )" href="">
+                            <span class="fas fa-trash"></span>
+                            Delete
+                        </a>
+                       
+
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+   
+ <!--  printing -->
+ <div class="row no-print">
+       
+    <button  class="btn btn-primary" onclick="printFun()" ><i class="fas fa-print"></i> Print</button>
+   
+</div>
+<!-- /.printing -->
+
+
+        <!-- card-body -->
+    </div>
+
+    
+    <script type="text/javascript">
+        function printFun() {
+        window.print();
+        }
+        </script>
+    <!-- fin content-wrapp -->
+</div>
+
+{% endblock %}
