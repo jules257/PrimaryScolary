@@ -9,6 +9,8 @@ from .cours import *
 from .tests import *
 from .taches import *
 from .inscriptions import *
+from .attributions import *
+
 
 
 
