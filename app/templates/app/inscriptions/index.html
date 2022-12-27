@@ -1,0 +1,136 @@
+{% extends 'app/layouts/default.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Inscription</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">ManagementScolary</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- button insert -->
+    
+    <center>
+        <a href="{% url 'inscriptions_create' %}" class="btn btn-primary">nouveau</a>
+
+    </center>
+    
+
+    <div class="card-body">
+
+        <!-- messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-alert mr-1"></i>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <table id="example1" class="table table-bordered table-hover">
+            <style>
+
+            </style>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>date</th>
+                    <th>annee scolaire</th>
+                    <th>classe</th>
+                    <th>eleve</th>
+                    <th>parent</th>
+
+                   
+
+
+
+
+
+
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscription in inscriptions %}
+                <tr>
+
+                    <td>{{inscription.id}}</td>
+                    <td>{{inscription.date}}</td>
+                    <td>{{inscription.anneescolaire}}</td>
+                    <td>{{inscription.classe.nom_classe}}</td>
+                    <td>{{inscription.elev.nom}} {{inscription.elev.prenom}}</td>
+
+
+                    <td>{{inscription.parent.nom}} {{inscription.parent.prenom}} {{inscription.parent.tel}}</td>
+                   
+
+
+
+
+
+
+
+                    <td>
+                       
+                        <a class="btn btn-success btn-sm" href="{% url 'inscriptions_edit' inscription.id %}">
+                            <span class="fas fa-edit"></span>
+                            Edit
+                        </a>
+                        
+                        <a class="btn btn-danger btn-sm" onclick="return confirm('do you want to delete!!' )"
+                            href="{% url 'inscriptions_delete' inscription.id %}">
+                            <span class="fas fa-trash"></span>
+                            Delete
+                        </a>
+                       
+
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+        <!--  printing -->
+        <div class="row no-print">
+
+            <button class="btn btn-primary" onclick="printFun()"><i class="fas fa-print"></i> Print</button>
+
+        </div>
+        <!-- /.printing -->
+
+
+        <!-- card-body -->
+    </div>
+
+
+    <script type="text/javascript">
+        function printFun() {
+            window.print();
+        }
+    </script>
+
+
+    <!-- fin content-wrapp -->
+</div>
+
+{% endblock %}

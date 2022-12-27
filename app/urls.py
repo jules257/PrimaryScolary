@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from app.views import home,enseignantes,anneescolaires,elevs,parents,classes,cours,tests,taches
+from app.views import home,enseignantes,anneescolaires,elevs,parents,classes,cours,tests,taches,inscriptions
 
 
 
@@ -47,11 +47,7 @@ urlpatterns = [
     path('classes/edit/<int:id>', classes.edit, name='classes_edit'),
     path('classes/delete/<int:id>', classes.delete, name='classes_delete'),
 
-    #  path('inscriptions/',inscriptions.index, name='inscriptions_index'),
-    # path('inscriptions/create', inscriptions.create, name='inscriptions_create'),
-    # path('inscriptions/store', inscriptions.store, name='inscriptions_store'),
-    # path('inscriptions/edit/<int:id>', inscriptions.edit, name='inscriptions_edit'),
-    # path('inscriptions/delete/<int:id>', inscriptions.delete, name='inscriptions_delete')
+
     
     path('tests/',tests.index, name='tests_index'),
     path('tests/create', tests.create, name='tests_create'),
@@ -65,6 +61,13 @@ urlpatterns = [
     path('taches/store', taches.store, name='taches_store'),
     path('taches/edit/<int:id>', taches.edit, name='taches_edit'),
     path('taches/delete/<int:id>',taches.delete, name='taches_delete'),
+    
+    
+    path('inscriptions/',inscriptions.index, name='inscriptions_index'),
+    path('inscriptions/create', inscriptions.create, name='inscriptions_create'),
+    path('inscriptions/store', inscriptions.store, name='inscriptions_store'),
+    path('inscriptions/edit/<int:id>', inscriptions.edit, name='inscriptions_edit'),
+    path('inscriptions/delete/<int:id>', inscriptions.delete, name='inscriptions_delete')
     
     
     
