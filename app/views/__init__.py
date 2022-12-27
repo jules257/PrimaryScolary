@@ -4,5 +4,7 @@ from .anneescolaires import *
 
 from .elevs import *
 from .parents import *
+from .classes import *
+
 
 
