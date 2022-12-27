@@ -10,6 +10,8 @@ from .tests import *
 from .taches import *
 from .inscriptions import *
 from .attributions import *
+from .fonctions import *
+
 
 
 

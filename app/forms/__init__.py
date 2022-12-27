@@ -8,6 +8,8 @@ from .test_form import TestForm
 from .tache_form import TacheForm
 from .inscription_form import InscriptionForm
 from .attribution_form import AttributionForm
+from .fonction_form import FonctionForm
+
 
 
 
