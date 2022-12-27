@@ -1,0 +1,81 @@
+{% include 'app/partials/head.html' %}
+{% load crispy_forms_tags %}
+
+<body class="bg-gradient-secondary" style="color: #007bff;">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+                <!-- jquery validation -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Register a new <small> membership</small></h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="{% url 'users_store' %}" method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                 
+                                    <div class="form-group">
+                                        {{ form.first_name|as_crispy_field }}
+
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.last_name|as_crispy_field }}
+
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.email|as_crispy_field }}
+
+                                    
+                                </div>
+                                
+                                    <div class="form-group ">
+                                        {{ form.username|as_crispy_field }}
+
+                                    </div>
+                                  </div>
+                                  <!-- col-md -->
+
+                                    <div class="col-md-4">
+                                    <div class="form-group ">
+                                        {{ form.password1|as_crispy_field }}
+
+                                    </div>
+                                    <div class="form-group ">
+                                        {{ form.password2|as_crispy_field }}
+
+
+                                    </div>
+                                    <!-- cl-md -->
+                                </div>
+                                <!-- row interieur -->
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="text-center">
+                          <a class="small" href="{% url 'users_login' %}">Already have an account? </a>
+                      </div>
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Register
+                        </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+           
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</body>
+   
