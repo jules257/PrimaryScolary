@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from app.views import home,enseignantes,anneescolaires,elevs,parents,classes,cours
+from app.views import home,enseignantes,anneescolaires,elevs,parents,classes,cours,tests
 
 
 
@@ -52,6 +52,12 @@ urlpatterns = [
     # path('inscriptions/store', inscriptions.store, name='inscriptions_store'),
     # path('inscriptions/edit/<int:id>', inscriptions.edit, name='inscriptions_edit'),
     # path('inscriptions/delete/<int:id>', inscriptions.delete, name='inscriptions_delete')
+    
+    path('tests/',tests.index, name='tests_index'),
+    path('tests/create', tests.create, name='tests_create'),
+    path('tests/store', tests.store, name='tests_store'),
+    path('tests/edit/<int:id>', tests.edit, name='tests_edit'),
+    path('tests/delete/<int:id>', tests.delete, name='tests_delete'),
     
     
     
