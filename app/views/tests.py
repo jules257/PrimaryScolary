@@ -10,9 +10,9 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
       # permission
-    # has_perm= False
-    # if request.user.has_perm('app.delete_test','app.change_test'):
-    #     has_perm = True
+    has_perm= False
+    if request.user.has_perm('app.delete_test','app.change_test'):
+        has_perm = True
     assert isinstance(request,HttpRequest)
     
     tests = Test.objects.all()
@@ -21,6 +21,7 @@ def index(request):
         'app/tests/index.html',
         {
             'tests':tests,
+            'has_perm':has_perm
             
             
         }
