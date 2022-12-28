@@ -10,10 +10,10 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     
-     # permission
-    # has_perm= False
-    # if request.user.has_perm('app.delete_tache','app.change_tache'):
-    #     has_perm = True
+    #  permission
+    has_perm= False
+    if request.user.has_perm('app.delete_tache','app.change_tache'):
+        has_perm = True
     assert isinstance(request,HttpRequest)
     
     taches = Tache.objects.all()
@@ -22,6 +22,7 @@ def index(request):
         'app/taches/index.html',
         {
             'taches':taches,
+            'has_perm':has_perm
         
             
         }

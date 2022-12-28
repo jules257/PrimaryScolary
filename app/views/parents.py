@@ -11,9 +11,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     
      # permission
-    # has_perm= False
-    # if request.user.has_perm('app.delete_parent','app.change_parent'):
-    #     has_perm = True
+    has_perm= False
+    if request.user.has_perm('app.delete_parent','app.change_parent'):
+        has_perm = True
     assert isinstance(request,HttpRequest)
     
     parents = Parent.objects.all()
@@ -22,6 +22,7 @@ def index(request):
         'app/parents/index.html',
         {
             'parents':parents,
+            'has_perm':has_perm
            
             
         }

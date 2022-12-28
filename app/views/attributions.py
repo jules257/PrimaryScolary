@@ -7,11 +7,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def index(request):
-    
-     # permission
-   
+    # permission
+    has_perm= False
+    if request.user.has_perm('app.delete_attribution','app.change_attribution'):
+       has_perm = True
     assert isinstance(request,HttpRequest)
     
     attributions = Attribution.objects.all()
@@ -20,6 +21,7 @@ def index(request):
         'app/attributions/index.html',
         {
             'attributions':attributions,
+            'has_perm':has_perm
             
             
         }

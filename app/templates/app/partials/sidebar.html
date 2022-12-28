@@ -14,11 +14,11 @@
         <div class="image">
           <span class="fas fa-user" style="color:blue ;" ></span>
         </div>
-        
+        {% if user.is_authenticated %}
         <div class="info">
-          <a href="#" class="d-block"><b style="color: blue;">On line</b> </a>
+          <a href="#" class="d-block">{{user.username}} <b style="color: blue;">On line</b> </a>
         </div>
-        
+        {% endif %}
         
       </div>
 
@@ -50,20 +50,42 @@
             <ul class="nav nav-treeview">
 
 
-              
+              {% if user.is_authenticated %}
               <li class="nav-item">
                 <a href="{% url 'enseignantes_index' %}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>enseignants</p>
                 </a>
               </li>
+              {% else %}
+              
+
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>enseignants</p>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if user.is_authenticated %}
+
               <li class="nav-item">
                 <a href="{% url 'anneescolaires_index' %}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>anneescolaires</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>anneescolaires</p>
+                </a>
+              </li>
+              {% endif %}
 
+              {% if user.is_authenticated %}
 
               <li class="nav-item">
                 <a href="{% url 'elevs_index' %}" class="nav-link ">
@@ -71,6 +93,17 @@
                   <p>eleves</p>
                 </a>
               </li>
+              {% else %}
+
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>eleves</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+
 
 
               <li class="nav-item">
@@ -79,7 +112,16 @@
                   <p>parents</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>parents</p>
+                </a>
+              </li>
 
+              {% endif %}
+              {% if user.is_authenticated %}
               
               <li class="nav-item">
                 <a href="{% url 'classes_index' %}" class="nav-link ">
@@ -87,6 +129,16 @@
                   <p>classe</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>classe</p>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if user.is_authenticated %}
 
               <li class="nav-item">
                 <a href="{% url 'cours_index' %}" class="nav-link ">
@@ -94,6 +146,17 @@
                   <p>cours</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>cours</p>
+                </a>
+              </li>
+              {% endif %}
+
+
+              {% if user.is_authenticated %}
           
               <li class="nav-item">
                 <a href="{% url 'tests_index' %}" class="nav-link ">
@@ -101,6 +164,16 @@
                   <p>test</p>
                 </a>
               </li>
+              {% else %}
+
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>test</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
 
 
               <li class="nav-item">
@@ -110,6 +183,16 @@
                 </a>
               </li>
 
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>taches</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+
 
               <li class="nav-item">
                 <a href="{% url 'inscriptions_index' %}" class="nav-link ">
@@ -117,6 +200,15 @@
                   <p>inscription</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>inscription</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
 
               <li class="nav-item">
                 <a href="{% url 'attributions_index' %}" class="nav-link ">
@@ -124,6 +216,15 @@
                   <p>attribution</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>attribution</p>
+                </a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
 
               <li class="nav-item">
                 <a href="{% url 'fonctions_index' %}" class="nav-link ">
@@ -131,13 +232,23 @@
                   <p>fonction</p>
                 </a>
               </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>fonction</p>
+                </a>
+              </li>
+              {% endif %}
 
+{% if has_perm %}
               <li class="nav-item">
                 <a href="{% url 'users_index' %}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>utilisateur</p>
                 </a>
               </li>
+              {% endif %}
 
           
 

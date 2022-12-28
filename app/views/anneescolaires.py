@@ -7,10 +7,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def index(request):
-    
-     # permission
+    # permission
+    has_perm= False
+    if request.user.has_perm('app.delete_anneescolaire','app.change_anneescolaire'):
+        has_perm = True
    
     assert isinstance(request,HttpRequest)
     
@@ -20,6 +22,7 @@ def index(request):
         'app/anneescolaires/index.html',
         {
             'anneescolaires':anneescolaires,
+            'has_perm':has_perm
             
             
         }
