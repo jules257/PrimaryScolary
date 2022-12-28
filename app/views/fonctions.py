@@ -11,7 +11,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     
      # permission
-   
+    has_perm= False
+    if request.user.has_perm('app.delete_fonction','app.change_fonction'):
+        has_perm = True
     assert isinstance(request,HttpRequest)
     
     fonctions = Fonction.objects.all()
@@ -20,6 +22,7 @@ def index(request):
         'app/Fonctions/index.html',
         {
             'fonctions':fonctions,
+            'has_perm':has_perm
             
             
         }
