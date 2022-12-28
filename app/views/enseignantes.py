@@ -80,6 +80,6 @@ def edit(request, id):
         return redirect('/enseignantes') 
     
 def delete(request, id):
-    elev = Enseignante.objects.get(pk=id)
+    enseignante = Enseignante.objects.get(pk=id)
     enseignante.delete()
     return redirect('/enseignantes')         
